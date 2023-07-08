@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "email": "ciccio@gmail.com",
+      "password": "$2a$10$kK4ebwyzTqy8c2jyeiAR..R6uHPxYk65zcAoonq4j6xdQrLTxmUHi",
+      "firstname": "ciccio",
+      "lastname": "ciccio",
+      "id": 1
+    }
+  ],
+  "posts": []
+}

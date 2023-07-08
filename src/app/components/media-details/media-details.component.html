@@ -1,0 +1,23 @@
+
+<div class="container">
+    <div class="ratio ratio-16x9">
+        <iframe width="1280" height="720" [src]="mediaDetailsService.sanitizeUrl(videoKey)" title="{{mediaDetails?.title}}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <h3>{{mediaDetails?.title}}</h3>
+    <span>• {{mediaDetails?.release_date}} • {{mediaDetails?.runtime}} min</span>
+    <div class="row row-cols-6 mt-3">
+        <h5 class="col-12">Generi:</h5>
+        <span class="col"  *ngFor="let genre of genres" > • {{genre}}</span>
+    </div>
+    <div class="row row-cols-6 mt-3">
+        <h5 class="col-12">Cast:</h5>
+        <span  *ngFor="let c of cast" class="col">{{c.name}}, </span>
+    </div>
+    <div>
+
+    </div>
+
+</div>
+
+
+
