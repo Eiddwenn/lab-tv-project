@@ -14,12 +14,18 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { RestrictedAreaComponent } from './components/restricted-area/restricted-area.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { MediaComponent } from './components/media/media.component';
 import { MediaDetailsComponent } from './components/media-details/media-details.component';
 import { MediaFinderComponent } from './components/media-finder/media-finder.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button' 
+import { MediaComponent } from './components/media/media.component';
+import { NowPlayingComponent } from './components/now-playing/now-playing.component';
+import { TopRatedComponent } from './components/top-rated/top-rated.component';
+import { UpcomingComponent } from './components/upcoming/upcoming.component';
+import { PopularComponent } from './components/popular/popular.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,10 +37,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RestrictedAreaComponent,
     UnauthorizedComponent,
     NotFoundComponent,
-    MediaComponent,
     MediaDetailsComponent,
     MediaFinderComponent,
-    DashboardComponent
+    DashboardComponent,
+    MediaComponent,
+    NowPlayingComponent,
+    TopRatedComponent,
+    UpcomingComponent,
+    PopularComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +52,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CarouselModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

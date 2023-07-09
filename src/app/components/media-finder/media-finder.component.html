@@ -1,1 +1,7 @@
-<p>media-finder works!</p>
+<div  class="container">
+    <div  class="row">
+        <div *ngFor="let movie of searchService.moviesResults" class="col-12 col-md-6 col-lg-4 py-2">
+            <app-media [movie]="movie"></app-media>
+        </div>
+    </div>
+</div>

@@ -3,7 +3,35 @@ $orange-crayola: #F3733Bff;
 $vermilion: #EF483Eff;
 $red-crayola: #E93852ff;
 $razzmatazz: #DF2466ff;
+$height-bar: 60px;
+$btn-size: 60px;
+$margin: 1em;
 
-nav {
+
+// --------- START SCSS PROJECT --------------------
+
+.header-bar {
     background-color: $orange-crayola;
+    height: $height-bar;
+    margin-bottom: $margin;
+
+    .logotype {
+        width: $btn-size;
+        padding: 5px;
+    }
+
+    .menu-btn {
+        all: unset;
+        width: $btn-size;
+        height: $btn-size;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        font-size: 2em;
+        text-align: center;
+        color: $dark-purple;
+    }
 }
+
+

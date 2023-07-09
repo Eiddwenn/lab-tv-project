@@ -1,5 +1,49 @@
-<div class="container">
-    <div class="row">
-        <app-media [movie]="movie" *ngFor="let movie of movies" class="col-12 col-sm-6 col-lg-3"></app-media>
-    </div>
+<!-- NOW PLAYING -->
+<div>
+    <h3>Now Playing</h3>
 </div>
+<div>
+    <app-now-playing></app-now-playing>
+</div>
+
+<!-- Popular -->
+<div>
+    <h3>Popular</h3>
+</div>
+<p-carousel [value]="mediaService.popular" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
+    <ng-template let-popular pTemplate="item">
+        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+            <div class="mb-3">
+                <img src="http://image.tmdb.org/t/p/original{{popular.backdrop_path}}" [alt]="popular.title" class="w-6 shadow-2 card-img-top" />
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>
+
+<!-- TOP RATED -->
+<div>
+    <h3>Top Rated</h3>
+</div>
+<p-carousel [value]="mediaService.topRated" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
+    <ng-template let-topRated pTemplate="item">
+        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+            <div class="mb-3">
+                <img src="http://image.tmdb.org/t/p/original{{topRated.backdrop_path}}" [alt]="topRated.title" class="w-6 shadow-2 card-img-top" />
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>
+
+<!-- UPCOMING -->
+<div>
+    <h3>Upcoming</h3>
+</div>
+<p-carousel [value]="mediaService.upcoming" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
+    <ng-template let-upcoming pTemplate="item">
+        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+            <div class="mb-3">
+                <img src="http://image.tmdb.org/t/p/original{{upcoming.backdrop_path}}" [alt]="upcoming.title" class="w-6 shadow-2 card-img-top" />
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>

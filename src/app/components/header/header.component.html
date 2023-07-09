@@ -1,36 +1,32 @@
-<!-- <nav>
-    <li class="logotype">
-        <a href="">Logotype</a>
-    </li>
-    <button class="btn burger" type="button" data-bs-toggle="offcanvas offcanvas-end" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class="bi bi-list"></i></button>
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul>
-                <li class="menu" [class.is-open]="isMenuOpen">
-                    <a class="menu-item" href="">Home</a>
-                    <a class="menu-item" href="">Login</a>
-                    <a class="menu-item" href="">Registrati</a>
-                    <a class="menu-item" href="">Area Riservata</a>
-                </li>
-            </ul>
-        </div>
+<div class="header-bar">
+    <div>
+        <a><img src="../../../assets/logo.png" alt="" class="logotype"></a>
     </div>
-</nav> -->
-
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
+    <button class="menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-list"></i></button>
+</div>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <button type="button" class="btn-close close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     <div class="offcanvas-header">
-        <app-search-bar></app-search-bar>
-        <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        ...
+        <app-search-bar  (searchEmit)="onSearch($event)"></app-search-bar>
+        <nav>
+            <div class="" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Login<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Registrati</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Area Riservata</a>
+                </li>
+                </ul>
+            </div>
+        </nav>
     </div>
 </div>
 

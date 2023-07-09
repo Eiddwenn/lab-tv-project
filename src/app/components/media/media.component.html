@@ -1,9 +1,2 @@
-<div class="card m-3">
-    <img src="http://image.tmdb.org/t/p/original{{movie?.poster_path}}" class="card-img-top" alt="{{movie?.title}}">
-    <div class="card-body">
-        <h5 class="card-title">{{movie?.title}}</h5>
-        <button type="button" class="btn btn-primary" (click)="goToDetails()">
-            <i class="bi bi-three-dots-vertical"></i>
-        </button>
-    </div>
-</div>
+<img src="http://image.tmdb.org/t/p/original{{movie?.backdrop_path}}" [alt]="movie?.title" class="img-fluid" (click)="goToDetails()"/>
+
