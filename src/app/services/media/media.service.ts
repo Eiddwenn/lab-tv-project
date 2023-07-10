@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Media } from 'src/app/models/media';
+import { Details } from 'src/app/models/media-details';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -9,6 +11,8 @@ import { environment } from 'src/environments/environment.development';
 export class MediaService {
 
   constructor(private http: HttpClient) { }
+
+  movieDetails$ = new BehaviorSubject<Details | undefined>(undefined)
   
   public nowPlaying?: Array<Media> = []
   public popular?: Array<Media> = []

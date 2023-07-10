@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Cast, Details, Genre } from 'src/app/models/media-details';
+import { Result } from 'src/app/models/similar';
 import { MediaDetailsService } from 'src/app/services/media-details/media-details.service';
+import { MediaService } from 'src/app/services/media/media.service';
 
 @Component({
   selector: 'app-media-details',
@@ -10,22 +12,25 @@ import { MediaDetailsService } from 'src/app/services/media-details/media-detail
 })
 export class MediaDetailsComponent implements OnInit{
 
-  constructor(protected mediaDetailsService: MediaDetailsService, private route: ActivatedRoute){}
+  constructor(protected mediaDetailsService: MediaDetailsService, private route: ActivatedRoute, private mediaService: MediaService){}
 
   videoKey: string = ''
-  mediaDetails?: Details
+  media?: Details
   genres?: Array<Genre> = []
   cast?: Array<Cast> = []
+  similarMedia: Array<Result>
+
 
   ngOnInit(): void {
-    this.route.params.subscribe({
-      next: params => {
-      const id = params['id']
-      this.getTrailer(id)
-      this.getMediaDetails(id)
-    },
-      error: err => console.log(err)
-    })
+    // this.route.params.subscribe({
+    //   next: params => {
+    //   const id = params['id']
+    //   this.getTrailer(this.media.id)
+    //   this.getMediaDetails(this.media.id)
+    // },
+    //   error: err => console.log(err)
+    // })
+    this.getMovieDetails()
   }
 
   getTrailer = (id: any) => {
@@ -42,7 +47,7 @@ export class MediaDetailsComponent implements OnInit{
   getMediaDetails = (id: any) => {
     this.mediaDetailsService.getDetails(id).subscribe({
       next: (data: any) => {
-        this.mediaDetails = data
+        this.media = data
         const findGenre = data.genres.map((genres:Genre) => genres.name)
         if (findGenre) {
           this.genres = findGenre
@@ -50,7 +55,28 @@ export class MediaDetailsComponent implements OnInit{
         const findCast = data.credits.cast.filter((cast:Cast) => cast.known_for_department === 'Acting').slice(0, 10)
         if (findCast) {
           this.cast = findCast
-          console.log(this.cast)
+        }
+      }
+    })
+  }
+
+  getMovieDetails = () => {
+    this.mediaService.movieDetails$.subscribe({
+      next: (data:any) => {
+        this.media = data
+        this.getMediaDetails(this.media.id)
+        this.getTrailer(this.media.id)
+        this.toSimilar(this.media.id)
+      }
+    })
+  }
+
+  toSimilar = (id: any) => {
+    this.mediaDetailsService.getSimilarMedia(id).subscribe({
+      next: (data: any) => {
+        const similarMedia = data.results.map((movie: any) => movie).slice(0, 5)
+        if (similarMedia) {
+          this.similarMedia = similarMedia
         }
       }
     })

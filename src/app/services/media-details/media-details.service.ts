@@ -22,4 +22,8 @@ export class MediaDetailsService {
   getDetails = (id:any) => {
     return this.http.get(`${environment.movieUrl}/${id}?api_key=${environment.movieApiKey}&append_to_response=credits`)
   }
+
+  getSimilarMedia = (id: any) => {
+    return this.http.get(`${environment.movieUrl}/${id}/similar?api_key=${environment.movieApiKey}`)
+  }
 }

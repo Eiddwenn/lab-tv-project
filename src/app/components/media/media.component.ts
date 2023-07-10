@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Details } from 'src/app/models/media-details';
+import { MediaService } from 'src/app/services/media/media.service';
 
 @Component({
   selector: 'app-media',
@@ -7,12 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./media.component.scss']
 })
 export class MediaComponent {
-  constructor(private router: Router){}
+  constructor(private router: Router, private mediaService: MediaService){}
 
   @Input() movie?: any 
 
-  goToDetails = () => {
-    this.router.navigate(['/media-details', this.movie?.id])
+  goToDetails = (movie: Details) => {
+    this.mediaService.movieDetails$.next(movie)    
+    this.router.navigateByUrl('/media-details')
   }
 
 }

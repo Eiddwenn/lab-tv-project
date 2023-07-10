@@ -10,40 +10,20 @@
 <div>
     <h3>Popular</h3>
 </div>
-<p-carousel [value]="mediaService.popular" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
-    <ng-template let-popular pTemplate="item">
-        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
-            <div class="mb-3">
-                <img src="http://image.tmdb.org/t/p/original{{popular.backdrop_path}}" [alt]="popular.title" class="w-6 shadow-2 card-img-top" />
-            </div>
-        </div>
-    </ng-template>
-</p-carousel>
+<div>
+    <app-popular></app-popular>
+</div>
 
 <!-- TOP RATED -->
 <div>
     <h3>Top Rated</h3>
 </div>
-<p-carousel [value]="mediaService.topRated" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
-    <ng-template let-topRated pTemplate="item">
-        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
-            <div class="mb-3">
-                <img src="http://image.tmdb.org/t/p/original{{topRated.backdrop_path}}" [alt]="topRated.title" class="w-6 shadow-2 card-img-top" />
-            </div>
-        </div>
-    </ng-template>
-</p-carousel>
+<div>
+    <app-top-rated></app-top-rated>
+</div>
 
 <!-- UPCOMING -->
 <div>
     <h3>Upcoming</h3>
 </div>
-<p-carousel [value]="mediaService.upcoming" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
-    <ng-template let-upcoming pTemplate="item">
-        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
-            <div class="mb-3">
-                <img src="http://image.tmdb.org/t/p/original{{upcoming.backdrop_path}}" [alt]="upcoming.title" class="w-6 shadow-2 card-img-top" />
-            </div>
-        </div>
-    </ng-template>
-</p-carousel>
+    <app-upcoming></app-upcoming>

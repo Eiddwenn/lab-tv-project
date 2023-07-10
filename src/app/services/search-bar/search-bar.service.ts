@@ -12,6 +12,7 @@ export class SearchBarService {
 
   moviesResults: Array<Media> = []
 
+  
   urlSearchMovie = `${environment.searchUrl}?api_key=${environment.movieApiKey}`
 
   searchMovie = (query?: string) => {

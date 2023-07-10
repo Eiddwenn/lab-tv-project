@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Media } from 'src/app/models/media';
+import { Details } from 'src/app/models/media-details';
 import { MediaService } from 'src/app/services/media/media.service';
 
 @Component({
@@ -52,10 +53,9 @@ export class NowPlayingComponent implements OnInit{
   
   // DETAILS
 
-  goToDetails = () => {
-    console.log('id:', this.mediaService.nowPlaying);
-    
-    // this.router.navigate(['/media-details', this.movie?.id])
+  goToDetails = (movie: Details) => {
+    this.mediaService.movieDetails$.next(movie)    
+    this.router.navigateByUrl('/media-details')
   }
 
 }

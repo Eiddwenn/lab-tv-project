@@ -1,1 +1,9 @@
-<p>popular works!</p>
+<p-carousel [value]="mediaService.popular" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
+    <ng-template let-popular pTemplate="item">
+        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+            <div class="mb-3">
+                <img src="http://image.tmdb.org/t/p/original{{popular.backdrop_path}}" [alt]="popular.title" class="w-6 shadow-2 card-img-top" (click)="goToDetails(popular)"/>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>

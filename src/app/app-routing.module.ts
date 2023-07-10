@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'media-finder', component: MediaFinderComponent},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'media-details/:id', component: MediaDetailsComponent},
+  {path: 'media-details', component: MediaDetailsComponent},
   {path: 'unauthorized', component: UnauthorizedComponent},
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {path: '**',  component: NotFoundComponent},

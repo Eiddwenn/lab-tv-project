@@ -2,7 +2,7 @@
     <ng-template let-nowPlaying pTemplate="item">
         <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
             <div class="mb-3">
-                <img src="http://image.tmdb.org/t/p/original{{nowPlaying.backdrop_path}}" [alt]="nowPlaying.title" class="w-6 shadow-2 card-img-top" (click)="goToDetails()"/>
+                <img src="http://image.tmdb.org/t/p/original{{nowPlaying.backdrop_path}}" [alt]="nowPlaying.title" class="w-6 shadow-2 card-img-top" (click)="goToDetails(nowPlaying)"/>
             </div>
         </div>
     </ng-template>
