@@ -6,6 +6,13 @@
       "firstname": "ciccio",
       "lastname": "ciccio",
       "id": 1
+    },
+    {
+      "email": "pippo@gmail.com",
+      "password": "$2a$10$TKI1j0A.YJ1FqkwtX0gJQeG2zmWXW8iepMU.H.S3qORdpKq4h/Uyu",
+      "firstname": "pippo",
+      "lastname": "pippo",
+      "id": 2
     }
   ],
   "posts": []

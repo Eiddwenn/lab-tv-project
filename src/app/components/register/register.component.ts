@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/models/user';
-import { RegisterService } from 'src/app/services/register/register.service';
+import { LoggedUser, User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +10,7 @@ import { RegisterService } from 'src/app/services/register/register.service';
 })
 export class RegisterComponent implements OnInit{
 
-  constructor(private sign: RegisterService){}
+  constructor(private authService: AuthService){}
 
   registerForm: FormGroup
 
@@ -32,7 +32,13 @@ export class RegisterComponent implements OnInit{
         email: form.value.email,
         password: form.value.password
       }
-    this.sign.register(body)
+    this.authService.register(body)
+    // .subscribe({
+    //   next: (data: LoggedUser) => {
+    //     console.log(data)
+    //   }
+    // })
+        console.log(this.authService.register(body))
   }
 
 

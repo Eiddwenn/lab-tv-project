@@ -11,6 +11,16 @@ export class MediaFinderComponent {
 
   constructor(private router: Router, public searchService: SearchBarService){}
 
+  onSearch = (value: string) => {
+    this.searchService.searchMovie(value).subscribe({
+      next: (data: any) => {
+        if(value){
+          this.searchService.moviesResults = data.results;
+        }
+      }
+    })
+  }
+
 
 
 }

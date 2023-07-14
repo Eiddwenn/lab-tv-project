@@ -1,13 +1,4 @@
-$dark-purple: #151329ff;
-$orange-crayola: #F3733Bff;
-$vermilion: #EF483Eff;
-$red-crayola: #E93852ff;
-$razzmatazz: #DF2466ff;
-$height-bar: 60px;
-$btn-size: 60px;
-$margin: 1em;
-
-
+@import "./src/utilities/variables";
 // --------- START SCSS PROJECT --------------------
 
 .header-bar {

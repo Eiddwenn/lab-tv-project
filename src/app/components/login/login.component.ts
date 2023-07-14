@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RegisterService } from 'src/app/services/register/register.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +10,7 @@ import { RegisterService } from 'src/app/services/register/register.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private signService: RegisterService, private router: Router){}
+  constructor(private authService: AuthService, private router: Router){}
 
   loginForm: FormGroup
 
@@ -21,42 +21,13 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  // onSubmit = (form: FormGroup) => {
-  //   const body = 
-  //   {
-  //     email: form.value.email,
-  //     password: form.value.password
-  //   }
-  //   if (form.valid) {
-  //     this.signService.sign(body).subscribe({
-  //       next: (data: any) => {
-  //         this.signService.$token = data.accessToken
-  //         console.log(this.signService.$token);
-  //         this.loginForm.reset()
-  //         this.router.navigateByUrl('/dashboard')
-  //       }
-  //     })
-  //   }
-  // }
   onSubmit = (form: FormGroup) => {
-    const body = 
-    {
-      email: form.value.email,
-      password: form.value.password
-    }
-    if (form.valid) {
-      this.signService.getLoggedInUser(body).subscribe({
-        next: (data: any) => {
-          const user = data.find((a:any)=> {
-            return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password
-          })
-          if(user){
-            this.loginForm.reset()
-            this.router.navigateByUrl('/dashboard')
-          }
-        }
-      })
-    }
+    this.authService.login(this.loginForm.getRawValue()).subscribe(u => {
+      this.authService.setLoggedUser(u)
+      this.router.navigateByUrl('/dashboard')
+      console.log(u);
+      
+    })
   }
 
 }

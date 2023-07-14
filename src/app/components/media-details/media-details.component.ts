@@ -81,5 +81,6 @@ export class MediaDetailsComponent implements OnInit{
       }
     })
   }
+  
 
 }

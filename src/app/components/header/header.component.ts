@@ -19,17 +19,8 @@ export class HeaderComponent {
     this.isMenuOpen = !this.isMenuOpen
   }
 
-  onSearch = (value: string) => {
-    this.searchService.searchMovie(value).subscribe({
-      next: (data: any) => {
-        if(value){
-          this.searchService.moviesResults = data.results;
-          this.router.navigateByUrl('/media-finder')
-        } else {
-          this.router.navigateByUrl('/dashboard')
-        }
-      }
-    })
+  goToSearch = () => {
+    this.router.navigateByUrl('/media-finder')
   }
 
 }

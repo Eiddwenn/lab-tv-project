@@ -1,6 +1,6 @@
 <div class="header-bar">
     <div>
-        <a><img src="../../../assets/logo.png" alt="" class="logotype"></a>
+        <a [routerLink]="['/dashboard']"><img src="../../../assets/logo.png" alt="" class="logotype"></a>
     </div>
     <button class="menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-list"></i></button>
 </div>
@@ -8,18 +8,20 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <button type="button" class="btn-close close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     <div class="offcanvas-header">
-        <app-search-bar  (searchEmit)="onSearch($event)"></app-search-bar>
         <nav>
             <div class="" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">Home<span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Login<span class="sr-only">(current)</span></a>
+                    <button class="nav-link" type="button" (click)="goToSearch()">Cerca<span class="sr-only"></span></button>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" [routerLink]="['/login']">Login<span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Registrati</a>
+                    <a class="nav-link" [routerLink]="['/register']">Registrati</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Area Riservata</a>
