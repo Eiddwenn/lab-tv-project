@@ -85,12 +85,16 @@ export class MediaDetailsComponent implements OnInit{
   }
   
 
-  buyMovie = () => {
-    this.buyMediaService.postMedia().subscribe({
-      next: (data: Media[]) => {
-        console.log(data);
+  buyMovie = (movie: Details) => {
+    console.log('movie id', movie.id);
+    
+    this.buyMediaService.postMedia(movie).subscribe({
+      next: (data: Details[]) => {
+        console.log('movie post', data);
         
-      }
+      },
+      error: err => console.log('errore', err)
+      
     })
   }
 

@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { Media } from 'src/app/models/media';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
+import { Details } from 'src/app/models/media-details';
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +19,14 @@ export class BuyMedia {
     return this.http.get<Media[]>(this.url + 'buyed-movies')
   }
 
-  postMedia = (): Observable<Media[]> => {
+  postMedia = (movie: Details): Observable<Details[]> => {
     const loggedUser = this.authService.getLoggedUser()
-    console.log(loggedUser.accessToken);
+    // console.log(loggedUser);
+    
     
     if(loggedUser) {
-      const options = {
-        headers: new HttpHeaders({
-          'Authorization': `Bearer ${loggedUser.accessToken}`
-        })
-      }
-      return this.http.post<Media[]>(this.url + 'buyed-movies', options)
+      
+      return this.http.post<Details[]>(this.url + 'buyed-movies', movie)
     }
     this.router.navigate(['/login'])
     return of([])

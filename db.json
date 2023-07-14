@@ -20,6 +20,20 @@
       "firstname": "titti",
       "lastname": "titti",
       "id": 3
+    },
+    {
+      "email": "a@a.a",
+      "password": "$2a$10$dwWxTAtpSY3Wcab2sIxAzu/F3SaBian3t6NtDIN7/YNWO5t13CtU6",
+      "firstname": "a",
+      "lastname": "a",
+      "id": 4
+    },
+    {
+      "email": "mick@gmail.com",
+      "password": "$2a$10$SoErX4uxTlgMUC6WajrtyOyesaFLYUywMVCw2cuvsHobI6QtCMDta",
+      "firstname": "mickey",
+      "lastname": "mickey",
+      "id": 5
     }
   ],
   "posts": [],

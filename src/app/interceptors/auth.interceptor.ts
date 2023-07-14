@@ -23,20 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
     if(loggedUser) {
       return request.clone({
         setHeaders: {
-          "Authorization": "Bearer" + loggedUser.accessToken
-        }
-      })
-    }
-    return request
-  }
-  
-  addTokenToBuy = (request: HttpRequest<any>) => {
-    const loggedUser = this.authService.getLoggedUser()
-
-    if(loggedUser) {
-      return request.clone({
-        setHeaders: {
-          "Authorization": "Bearer" + loggedUser.accessToken
+          "Authorization": "Bearer " + loggedUser.accessToken
         }
       })
     }
