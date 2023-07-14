@@ -32,13 +32,11 @@ export class RegisterComponent implements OnInit{
         email: form.value.email,
         password: form.value.password
       }
-    this.authService.register(body)
-    // .subscribe({
-    //   next: (data: LoggedUser) => {
-    //     console.log(data)
-    //   }
-    // })
-        console.log(this.authService.register(body))
+    this.authService.register(body).subscribe({
+      next: (data: LoggedUser) => {
+        console.log(data)
+      }
+    })
   }
 
 

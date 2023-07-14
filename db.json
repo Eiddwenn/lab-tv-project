@@ -13,6 +13,13 @@
       "firstname": "pippo",
       "lastname": "pippo",
       "id": 2
+    },
+    {
+      "email": "titti@gmail.com",
+      "password": "$2a$10$y.MwdZMK6vcosoS8IUbmyun1X26320tY2p3Lc6E0ml1JMYJF9KSrC",
+      "firstname": "titti",
+      "lastname": "titti",
+      "id": 3
     }
   ],
   "posts": []
