@@ -5,6 +5,7 @@
     </div>
     <h3>{{media?.title}}</h3>
     <span>• {{media?.release_date}} • {{media?.runtime}} min</span>
+    <button type="button" (click)="buyMovie()">Acquista</button>
     <div class="row row-cols-6 mt-3">
         <h5 class="col-12">Generi:</h5>
         <span class="col"  *ngFor="let genre of genres" > • {{genre}}</span>

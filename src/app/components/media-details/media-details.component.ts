@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Media } from 'src/app/models/media';
 import { Cast, Details, Genre } from 'src/app/models/media-details';
 import { Result } from 'src/app/models/similar';
+import { BuyMedia } from 'src/app/services/login/buy-media.service';
 import { MediaDetailsService } from 'src/app/services/media-details/media-details.service';
 import { MediaService } from 'src/app/services/media/media.service';
 
@@ -12,7 +14,7 @@ import { MediaService } from 'src/app/services/media/media.service';
 })
 export class MediaDetailsComponent implements OnInit{
 
-  constructor(protected mediaDetailsService: MediaDetailsService, private route: ActivatedRoute, private mediaService: MediaService){}
+  constructor(protected mediaDetailsService: MediaDetailsService, private route: ActivatedRoute, private mediaService: MediaService, private buyMediaService: BuyMedia){}
 
   videoKey: string = ''
   media?: Details
@@ -82,5 +84,15 @@ export class MediaDetailsComponent implements OnInit{
     })
   }
   
+
+  buyMovie = () => {
+    this.buyMediaService.postMedia().subscribe({
+      next: (data: Media[]) => {
+        console.log(data);
+        
+      }
+    })
+  }
+
 
 }

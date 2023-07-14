@@ -16,6 +16,8 @@ export class MediaFinderComponent {
       next: (data: any) => {
         if(value){
           this.searchService.moviesResults = data.results;
+        } else {
+          this.searchService.moviesResults = []
         }
       }
     })
