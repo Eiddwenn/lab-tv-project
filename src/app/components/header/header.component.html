@@ -1,8 +1,6 @@
 <header class="header">
     <a [routerLink]="['/dashboard']" class="logo-link"><img src="../../../assets/logo.png" alt="Lab TV" class="logotype"></a>
-    
     <i class="bi bi-list" id="menu-icon" (click)="showMenu()"></i>
-
     <nav class="navbar" [ngClass]="activeClass ? 'active' : ''">
         <a class="nav-link" href="#">Home</a>
         <a class="nav-link" (click)="goToSearch()">Cerca</a>
@@ -11,19 +9,4 @@
         <a class="nav-link" [routerLink]="['/restricted-area']" *ngIf="!isAuthenticated">Area Riservata </a>
         <a class="nav-link" [routerLink]="['/restricted-area']" *ngIf="isAuthenticated">{{authService.username | titlecase}}</a>
     </nav>
-
 </header>
-
-
-
-
-<!-- 
-
-    https://stackoverflow.com/questions/76319008/angular-after-login-page-not-refreshed-with-newest-info
-    https://stackoverflow.com/questions/52151935/angular-hide-element-when-user-is-logged-in
-
-
-    https://codinglatte.com/posts/angular/responsive-navbar-angular-flex-layout/
-
-    https://www.youtube.com/watch?v=p1GmFCGuVjw
- -->
