@@ -1,8 +1,23 @@
 <p-carousel [value]="mediaService.nowPlaying" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
     <ng-template let-nowPlaying pTemplate="item">
-        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+        <div class="m-2 text-center py-2 px-3 modal-show">
             <div class="mb-3">
-                <img src="http://image.tmdb.org/t/p/original{{nowPlaying.backdrop_path}}" [alt]="nowPlaying.title" class="w-6 shadow-2 card-img-top" (click)="goToDetails(nowPlaying)"/>
+                <img src="http://image.tmdb.org/t/p/original{{nowPlaying.backdrop_path}}" [alt]="nowPlaying.title" class="w-6 card-img-top movie-poster" (click)="goToDetails(nowPlaying)"/>
+            </div>
+            <div class="modal">
+                <div class="mask">
+                    <img src="http://image.tmdb.org/t/p/original{{nowPlaying.poster_path}}" [alt]="nowPlaying.title" class="modal-poster" (click)="goToDetails(nowPlaying)">
+                </div>
+                <div class="modal-details">
+                    <div class="movie-details">
+                        <div class="movie-title">
+                            <span>{{nowPlaying.title}}</span>
+                        </div>
+                        <p>Data di uscita: {{nowPlaying.release_date}}</p>
+                        <p>Voto: {{nowPlaying.vote_average}}</p>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </ng-template>

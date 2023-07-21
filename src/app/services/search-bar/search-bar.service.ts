@@ -11,11 +11,10 @@ export class SearchBarService {
   constructor(private http: HttpClient) { }
 
   moviesResults: Array<Media> = []
-
   
   urlSearchMovie = `${environment.searchUrl}?api_key=${environment.movieApiKey}`
 
-  searchMovie = (query?: string) => {
-    return this.http.get(`${this.urlSearchMovie}&query=${query}`)
+  searchMovie = (query?: string | any, page?: number) => {
+    return this.http.get(`${this.urlSearchMovie}&query=${query}&page=${page}`)
   }
 }

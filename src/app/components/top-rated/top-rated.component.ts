@@ -53,8 +53,10 @@ export class TopRatedComponent {
   }
 
   goToDetails = (movie: Details) => {
-    this.mediaService.movieDetails$.next(movie)    
-    this.router.navigateByUrl('/media-details')
+    this.mediaService.movieDetails$.next(movie)
+    localStorage.setItem('id', movie.id.toString())
+    const id = localStorage.getItem('id')    
+    this.router.navigate(['media-details', id])
   }
 
 }

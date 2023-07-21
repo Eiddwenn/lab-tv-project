@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { find } from 'rxjs';
 import { Media } from 'src/app/models/media';
 import { Cast, Details, Genre } from 'src/app/models/media-details';
 import { Result } from 'src/app/models/similar';
@@ -14,25 +15,48 @@ import { MediaService } from 'src/app/services/media/media.service';
 })
 export class MediaDetailsComponent implements OnInit{
 
-  constructor(protected mediaDetailsService: MediaDetailsService, private route: ActivatedRoute, private mediaService: MediaService, private buyMediaService: BuyMedia){}
+  constructor(protected mediaDetailsService: MediaDetailsService, private route: ActivatedRoute, private mediaService: MediaService, private buyMediaService: BuyMedia, private router: Router){}
 
-  videoKey: string = ''
-  media?: Details
-  genres?: Array<Genre> = []
-  cast?: Array<Cast> = []
-  similarMedia: Array<Result>
+  videoKey: string = '';
+  media?: Details;
+  genres?: Array<Genre> = [];
+  cast?: Array<Cast> = [];
+  director: string;
+  similarMedia: Array<Result>;
+  responsiveOptions: any[] | undefined;
 
+  trailerError: boolean = false;
 
   ngOnInit(): void {
-    // this.route.params.subscribe({
-    //   next: params => {
-    //   const id = params['id']
-    //   this.getTrailer(this.media.id)
-    //   this.getMediaDetails(this.media.id)
-    // },
-    //   error: err => console.log(err)
-    // })
-    this.getMovieDetails()
+    this.route.params.subscribe({
+      next: params => {
+        const id = params['id'];
+        this.getMovieDetails(id);
+      }
+    })
+
+    this.responsiveOptions = [
+      {
+          breakpoint: '1500px',
+          numVisible: 4,
+          numScroll: 1
+      },
+      {
+          breakpoint: '1199px',
+          numVisible: 3,
+          numScroll: 1
+      },
+      {
+          breakpoint: '950px',
+          numVisible: 2,
+          numScroll: 1
+      },
+      {
+          breakpoint: '700px',
+          numVisible: 1,
+          numScroll: 1
+      }
+  ];
   }
 
   getTrailer = (id: any) => {
@@ -41,8 +65,18 @@ export class MediaDetailsComponent implements OnInit{
         const officialTrailerVideo = data.results.find((video: any) => video.name === "Official Trailer");
         if (officialTrailerVideo) {
           this.videoKey = officialTrailerVideo.key;
+          this.trailerError = false;
+        } else {
+        const officialTrailerVideo = data.results.find((video: any) => video.name.toLowerCase().includes('trailer'));
+          if (officialTrailerVideo && officialTrailerVideo.key) {
+            this.videoKey = officialTrailerVideo.key;
+            this.trailerError = false;
+          } else {
+            this.trailerError = true;
+          }
         }
-      }
+      },
+      error: err => this.trailerError = true
     })
   }
 
@@ -50,6 +84,11 @@ export class MediaDetailsComponent implements OnInit{
     this.mediaDetailsService.getDetails(id).subscribe({
       next: (data: any) => {
         this.media = data
+        const findDirect = data.credits.cast.find((cast: Cast) => cast.known_for_department === 'Directing')
+        if(findDirect) {
+          this.director = findDirect.name
+        }
+
         const findGenre = data.genres.map((genres:Genre) => genres.name)
         if (findGenre) {
           this.genres = findGenre
@@ -62,13 +101,21 @@ export class MediaDetailsComponent implements OnInit{
     })
   }
 
-  getMovieDetails = () => {
+  getMovieDetails = (id: any) => {
     this.mediaService.movieDetails$.subscribe({
       next: (data:any) => {
-        this.media = data
-        this.getMediaDetails(this.media.id)
-        this.getTrailer(this.media.id)
-        this.toSimilar(this.media.id)
+        if(data) {
+          this.media = data;
+          this.getMediaDetails(this.media.id);
+          this.getTrailer(this.media.id);
+          this.toSimilar(this.media.id);
+          localStorage.setItem('id', data.id);
+        } else {
+          const id = localStorage.getItem('id');
+          this.getMediaDetails(id);
+          this.getTrailer(id);
+          this.toSimilar(id);
+        }
       }
     })
   }
@@ -76,7 +123,7 @@ export class MediaDetailsComponent implements OnInit{
   toSimilar = (id: any) => {
     this.mediaDetailsService.getSimilarMedia(id).subscribe({
       next: (data: any) => {
-        const similarMedia = data.results.map((movie: any) => movie).slice(0, 5)
+        const similarMedia = data.results.map((movie: any) => movie).slice(0, 10)
         if (similarMedia) {
           this.similarMedia = similarMedia
         }
@@ -85,17 +132,28 @@ export class MediaDetailsComponent implements OnInit{
   }
   
 
-  buyMovie = (movie: Details) => {
+  buyMovie = (movie: any) => {
     console.log('movie id', movie.id);
     
     this.buyMediaService.postMedia(movie).subscribe({
-      next: (data: Details[]) => {
+      next: (data: any[]) => {
         console.log('movie post', data);
         
       },
       error: err => console.log('errore', err)
       
     })
+  }
+
+  backToHome = () => {
+    this.router.navigateByUrl('/dashboard')
+  }
+
+  goToDetails = (movie: Details) => {
+    this.mediaService.movieDetails$.next(movie)
+    localStorage.setItem('id', movie.id.toString())
+    const id = localStorage.getItem('id')
+    this.router.navigate(['media-details', id])
   }
 
 

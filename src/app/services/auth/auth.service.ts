@@ -12,6 +12,8 @@ export class AuthService {
 
   url = 'http://localhost:3000/'
 
+  isLoggedin: boolean = false;
+
   $token = new Subject
 
   register = (user: RegisterDto): Observable<LoggedUser> => {
@@ -31,11 +33,18 @@ export class AuthService {
     if(userStorage) {
       return JSON.parse(userStorage) as LoggedUser
     }
-
     return null
   }
 
-
+  isLoggedIn() {
+    if (JSON.parse(localStorage.getItem('user')).accessToken == null) {
+      this.isLoggedin = false;
+      return this.isLoggedin;
+    }
+    else {
+      return true;
+    }
+  }
 
   
 }

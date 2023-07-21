@@ -15,3 +15,10 @@ export interface Media {
     vote_count:        number;
 }
 
+export interface Movie {
+    title: string,
+    backdrop_path: string,
+    poster_path: string,
+    id: number
+}
+

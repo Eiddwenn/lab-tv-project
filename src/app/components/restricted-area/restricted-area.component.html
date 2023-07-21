@@ -1,1 +1,10 @@
-<p>restricted-area works!</p>
+<p-carousel [value]="movie" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
+    <ng-template let-movie pTemplate="item">
+        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+            <div class="mb-3">
+                <img src="http://image.tmdb.org/t/p/original{{movie.poster_path}}" [alt]="movie.title" class="w-25 shadow-2 card-img-top" (click)="goToDetails(movie)"/>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="deleteMovie(movie.id)"><i class="bi bi-trash3"></i></button>
+        </div>
+    </ng-template>
+</p-carousel>

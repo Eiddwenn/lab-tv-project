@@ -1,34 +1,28 @@
-<div class="header-bar">
-    <div>
-        <a [routerLink]="['/dashboard']"><img src="../../../assets/logo.png" alt="" class="logotype"></a>
-    </div>
-    <button class="menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-list"></i></button>
-</div>
+<header class="header">
+    <a [routerLink]="['/dashboard']" class="logo-link"><img src="../../../assets/logo.png" alt="Lab TV" class="logotype"></a>
 
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <button type="button" class="btn-close close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    <div class="offcanvas-header">
-        <nav>
-            <div class="" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home<span class="sr-only"></span></a>
-                </li>
-                <li class="nav-item active">
-                    <button class="nav-link" type="button" (click)="goToSearch()">Cerca<span class="sr-only"></span></button>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" [routerLink]="['/login']">Login<span class="sr-only"></span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/register']">Registrati</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Area Riservata</a>
-                </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</div>
+    <i class="bi bi-list" id="menu-icon" (click)="showMenu()"></i>
 
+    <nav class="navbar" [ngClass]="activeClass ? 'active' : ''">
+        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" (click)="goToSearch()">Cerca</a>
+        <a class="nav-link" [routerLink]="['/login']" *ngIf="!isAuthenticated">Login</a>
+        <a class="nav-link" (click)="logout()" *ngIf="isAuthenticated">Logout</a>
+        <a class="nav-link" [routerLink]="['/restricted-area']">Area Riservata</a>
+    </nav>
+
+</header>
+
+
+
+
+<!-- 
+
+    https://stackoverflow.com/questions/76319008/angular-after-login-page-not-refreshed-with-newest-info
+    https://stackoverflow.com/questions/52151935/angular-hide-element-when-user-is-logged-in
+
+
+    https://codinglatte.com/posts/angular/responsive-navbar-angular-flex-layout/
+
+    https://www.youtube.com/watch?v=p1GmFCGuVjw
+ -->

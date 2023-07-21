@@ -1,0 +1,19 @@
+@import "./src/utilities/variables";
+// --------- START SCSS PROJECT --------------------
+
+.footer {
+    background-color: $orange-crayola;
+    height: $height-bar;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .social {
+        text-decoration: none;
+        width: $btn-size;
+        height: $btn-size;
+        font-size: 2em;
+        text-align: center;
+        color: $dark-purple;
+    }
+}

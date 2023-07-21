@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
@@ -31,7 +31,6 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
     HeaderComponent,
     FooterComponent,
     SearchBarComponent,

@@ -11,10 +11,14 @@ export class MediaFinderComponent {
 
   constructor(private router: Router, public searchService: SearchBarService){}
 
+  page: number = 1;
+  searchValue: string = '';
+
   onSearch = (value: string) => {
-    this.searchService.searchMovie(value).subscribe({
+    this.searchService.searchMovie(value, this.page).subscribe({
       next: (data: any) => {
         if(value){
+          this.searchValue = value
           this.searchService.moviesResults = data.results;
         } else {
           this.searchService.moviesResults = []
@@ -23,6 +27,18 @@ export class MediaFinderComponent {
     })
   }
 
+  load = () => {
+    this.page++
+    this.showMore(this.page)
+  }
 
+  showMore = (page: number) => {
+    this.searchService.searchMovie(this.searchValue, page).subscribe({
+      next: (data: any) => {
+        this.searchService.moviesResults = this.searchService.moviesResults?.concat(data.results)
+      }
+    })
+    
+  }
 
 }

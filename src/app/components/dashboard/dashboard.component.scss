@@ -1,0 +1,9 @@
+@import "./src/utilities/variables";
+// --------- START SCSS PROJECT --------------------
+
+.title {
+    position: relative;
+    margin-left: 72px;
+    width: 500px;
+    color: $orange-crayola;
+}

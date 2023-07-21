@@ -1,9 +1,25 @@
 <p-carousel [value]="mediaService.popular" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
     <ng-template let-popular pTemplate="item">
-        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+        <div class="m-2 text-center py-2 px-3 modal-show">
             <div class="mb-3">
-                <img src="http://image.tmdb.org/t/p/original{{popular.backdrop_path}}" [alt]="popular.title" class="w-6 shadow-2 card-img-top" (click)="goToDetails(popular)"/>
+                <img src="http://image.tmdb.org/t/p/original{{popular.backdrop_path}}" [alt]="popular.title" class="w-6 card-img-top movie-poster" (click)="goToDetails(popular)"/>
             </div>
+            <div class="modal">
+                <div class="mask">
+                    <img src="http://image.tmdb.org/t/p/original{{popular.poster_path}}" [alt]="popular.title" class="modal-poster" (click)="goToDetails(popular)">
+                </div>
+                <div class="modal-details">
+                    <div class="movie-title">
+                        <span>{{popular.title}}</span>
+                    </div>
+                    <div class="movie-details">
+                        <p>Data di uscita: <br>{{popular.release_date}}</p>
+                        <p>Voto: {{popular.vote_average}}</p>
+                    </div>
+                </div>
+                
+            </div>
+
         </div>
     </ng-template>
 </p-carousel>

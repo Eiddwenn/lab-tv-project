@@ -17,5 +17,6 @@ export class MediaComponent {
     this.mediaService.movieDetails$.next(movie)    
     this.router.navigateByUrl('/media-details')
   }
+  
 
 }

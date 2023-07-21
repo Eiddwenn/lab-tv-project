@@ -1,1 +1,12 @@
-<p>unauthorized works!</p>
+<div class="container-error">
+    <div class="cont-message">
+        <h1 class="error-code"><i class="bi bi-exclamation-triangle-fill"></i> 401</h1>
+        <div class="error-message">
+            <h2>missing permission</h2>
+            <p>
+                Sorry, it looks like you don't have permission to access this page.
+            </p> 
+            <span>Don't worry, you can access <a [routerLink]="['/login']">here!</a></span>
+        </div>
+    </div>
+</div>

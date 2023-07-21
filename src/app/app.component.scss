@@ -1,0 +1,8 @@
+@import "./src/utilities/variables";
+// --------- START SCSS PROJECT --------------------
+
+.main {
+    min-height: calc(100vh - 130px);
+    background: $gradient-top; 
+    // padding-top: 100px;
+}

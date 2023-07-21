@@ -1,28 +1,106 @@
 @import "./src/utilities/variables";
 // --------- START SCSS PROJECT --------------------
 
-.header-bar {
-    background-color: $orange-crayola;
-    height: $height-bar;
-    margin-bottom: $margin;
+.header {
+    position: relative;
+    width: 100%;
+    padding: 0.25rem 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    background: $orange-crayola;
+    border-bottom: 2px solid $orange-crayola-rgba;
+    backdrop-filter: blur(10px);
 
-    .logotype {
-        width: $btn-size;
-        padding: 5px;
+    .logo-link {
+        margin: 0;
+
+        .logotype {
+            height: 60px;
+        }
     }
 
-    .menu-btn {
-        all: unset;
-        width: $btn-size;
-        height: $btn-size;
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 1;
-        font-size: 2em;
-        text-align: center;
-        color: $dark-purple;
+    #menu-icon {
+        font-size: 36px;
+        color: #fff;
+        display: none;
+    }
+
+    .navbar .nav-link {
+        position: relative;
+        font-size: 1.1em;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        margin-left: 40px;
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 3px;
+            background: #fff;
+            border-radius: 5px;
+            transform-origin: right;
+            transform: scale(0);
+            transition: transform .5s;
+        }
+        &:hover:after {
+            transform: scale(1);
+        }
     }
 }
+
+@media (max-width: 990px) {
+    .header {
+        padding: 0.25rem 4%;
+    }
+}
+
+@media (max-width: 768px) {
+    
+    .header {
+
+        .logotype {
+            padding: 5px 0;
+        }
+
+        #menu-icon {
+            display: block;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            padding: 0 4%;
+            background: $orange-crayola-rgba-8;
+            backdrop-filter: blur(10px);
+            transition: opacity .5s ease-out;
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            z-index: 2;
+            
+            .nav-link {
+                display: block;
+                margin:  1.5rem 0;
+            }
+        }
+        
+        .active {
+            opacity: 1;
+            height: auto;
+            display: block;
+        }
+
+    }
+}
+
+
 
 
