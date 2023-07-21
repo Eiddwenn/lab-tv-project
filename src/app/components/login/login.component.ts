@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
   onSubmit = (form: FormGroup) => {
     this.authService.login(this.loginForm.getRawValue()).subscribe(u => {
       this.authService.setLoggedUser(u)
+      // this.authService.nameUser()
       this.router.navigate(['dashboard']).then(() => {
         window.location.reload()
       })

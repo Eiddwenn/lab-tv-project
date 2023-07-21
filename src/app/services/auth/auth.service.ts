@@ -13,6 +13,8 @@ export class AuthService {
   url = 'http://localhost:3000/'
 
   isLoggedin: boolean = false;
+  
+  username: string = '';
 
   $token = new Subject
 
@@ -44,6 +46,13 @@ export class AuthService {
     else {
       return true;
     }
+  }
+
+  nameUser = () => {
+    const name = JSON.parse(localStorage.getItem('user'))
+    this.username = name.user.firstname
+    console.log();
+    return this.username
   }
 
   

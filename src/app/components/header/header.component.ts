@@ -10,12 +10,13 @@ import { SearchBarService } from 'src/app/services/search-bar/search-bar.service
 })
 export class HeaderComponent implements OnInit{
 
-  constructor(private searchService: SearchBarService, private router: Router, private authService: AuthService){}
+  constructor(private searchService: SearchBarService, private router: Router, public authService: AuthService){}
 
   isAuthenticated: boolean;
 
   ngOnInit(): void {
     this.isLoggedIn();
+    this.authService.nameUser();
   }
 
   @Input() movie: any
