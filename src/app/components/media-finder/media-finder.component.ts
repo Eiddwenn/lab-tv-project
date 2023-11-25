@@ -13,6 +13,7 @@ export class MediaFinderComponent {
 
   page: number = 1;
   searchValue: string = '';
+  showButton: boolean = false;
 
   onSearch = (value: string) => {
     this.searchService.searchMovie(value, this.page).subscribe({
@@ -20,8 +21,10 @@ export class MediaFinderComponent {
         if(value){
           this.searchValue = value
           this.searchService.moviesResults = data.results;
+          this.showButton = true;
         } else {
           this.searchService.moviesResults = []
+          this.showButton = false;
         }
       }
     })
@@ -35,10 +38,9 @@ export class MediaFinderComponent {
   showMore = (page: number) => {
     this.searchService.searchMovie(this.searchValue, page).subscribe({
       next: (data: any) => {
-        this.searchService.moviesResults = this.searchService.moviesResults?.concat(data.results)
+        this.searchService.moviesResults = this.searchService.moviesResults?.concat(data.results);
       }
     })
-    
   }
 
 }

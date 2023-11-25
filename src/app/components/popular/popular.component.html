@@ -1,25 +1,30 @@
-<p-carousel [value]="mediaService.popular" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
+<p-carousel [value]="mediaService.popular" [numVisible]="7" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
     <ng-template let-popular pTemplate="item">
-        <div class="m-2 text-center py-2 px-3 modal-show">
+        <div class="my-2 mx-3 text-center modal-show">
             <div class="mb-3">
-                <img src="http://image.tmdb.org/t/p/original{{popular.backdrop_path}}" [alt]="popular.title" class="w-6 card-img-top movie-poster" (click)="goToDetails(popular)"/>
+                <img src="http://image.tmdb.org/t/p/original{{popular.poster_path}}" [alt]="popular.title" class="w-6 card-img-top movie-poster"/>
             </div>
-            <div class="modal">
-                <div class="mask">
-                    <img src="http://image.tmdb.org/t/p/original{{popular.poster_path}}" [alt]="popular.title" class="modal-poster" (click)="goToDetails(popular)">
+            <div class="modal-movie">
+                <div>
+                    <img src="http://image.tmdb.org/t/p/original{{popular.backdrop_path}}" [alt]="popular.title" class="w-6 card-img-top movie-backdrop">
                 </div>
+                <div class="movie-title">
+                    <h1>{{popular.title}}</h1>
+                </div>
+                <i class="bi bi-arrow-right-circle icon-position" (click)="goToDetails(popular)"></i>
                 <div class="modal-details">
-                    <div class="movie-title">
-                        <span>{{popular.title}}</span>
-                    </div>
                     <div class="movie-details">
-                        <p>Data di uscita: <br>{{popular.release_date}}</p>
-                        <p>Voto: {{popular.vote_average}}</p>
+                        <div class="movie-info">
+                            <p class="text-movie">• {{popular.release_date}}</p>
+                            <p class="text-movie"><i class="bi bi-star-fill"></i> {{popular.vote_average}}</p>
+                        </div>
+                        <div class="movie-plot">
+                            <p>{{popular.overview | slice:0:110}} ...</p>
+                        </div>
                     </div>
                 </div>
                 
             </div>
-
         </div>
     </ng-template>
 </p-carousel>

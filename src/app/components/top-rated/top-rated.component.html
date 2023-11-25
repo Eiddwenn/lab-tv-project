@@ -1,25 +1,30 @@
-<p-carousel [value]="mediaService.topRated" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
+<p-carousel [value]="mediaService.topRated" [numVisible]="7" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
     <ng-template let-topRated pTemplate="item">
-        <div class="m-2 text-center py-2 px-3 modal-show">
+        <div class="my-2 mx-3 text-center modal-show">
             <div class="mb-3">
-                <img src="http://image.tmdb.org/t/p/original{{topRated.backdrop_path}}" [alt]="topRated.title" class="w-6 card-img-top movie-poster" (click)="goToDetails(topRated)"/>
+                <img src="http://image.tmdb.org/t/p/original{{topRated.poster_path}}" [alt]="topRated.title" class="w-6 card-img-top movie-poster" />
             </div>
-            <div class="modal">
-                <div class="mask">
-                    <img src="http://image.tmdb.org/t/p/original{{topRated.poster_path}}" [alt]="topRated.title" class="modal-poster" (click)="goToDetails(topRated)">
+            <div class="modal-movie">
+                <div>
+                    <img src="http://image.tmdb.org/t/p/original{{topRated.backdrop_path}}" [alt]="topRated.title" class="w-6 card-img-top movie-backdrop">
                 </div>
+                <div class="movie-title">
+                    <h1>{{topRated.title}}</h1>
+                </div>
+                <i class="bi bi-arrow-right-circle icon-position" (click)="goToDetails(topRated)"></i>
                 <div class="modal-details">
-                    <div class="movie-title">
-                        <span>{{topRated.title}}</span>
-                    </div>
                     <div class="movie-details">
-                        <p>Data di uscita: <br>{{topRated.release_date}}</p>
-                        <p>Voto: {{topRated.vote_average}}</p>
+                        <div class="movie-info">
+                            <p class="text-movie">• {{topRated.release_date}}</p>
+                            <p class="text-movie"><i class="bi bi-star-fill"></i> {{topRated.vote_average}}</p>
+                        </div>
+                        <div class="movie-plot">
+                            <p>{{topRated.overview | slice:0:110}} ...</p>
+                        </div>
                     </div>
                 </div>
                 
             </div>
-
         </div>
     </ng-template>
 </p-carousel>

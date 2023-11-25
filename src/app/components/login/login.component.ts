@@ -16,18 +16,18 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
         transition(
           ':enter',
           [
-            style({ transform: 'translateX(0)', height: '440px', opacity: 1}),
-            style({ transform: 'translateX(400px)', height: '440px', opacity: 0}),
+            style({ transform: 'translateX(0)', opacity: 1}),
+            style({ transform: 'translateX(400px)', opacity: 0}),
             animate('.2s ease-in',
-            style({ transform: 'translateX(0)', height: '440px', opacity: 1}))
+            style({ transform: 'translateX(0)', opacity: 1}))
           ]
         ),
         transition(
           ':leave',
           [
-            style({ transform: 'translateX(0)', height: '570px', opacity: 1}),
+            style({ transform: 'translateX(0)', opacity: 1}),
             animate('.2s ease-out',
-            style({ transform: 'translateX(-400px)', height: '570px', opacity: 0}))
+            style({ transform: 'translateX(-400px)', opacity: 0}))
           ]
         )
       ]
@@ -40,7 +40,11 @@ export class LoginComponent implements OnInit {
 
   changeForm: boolean = false;
 
+  logError: String = '';
+  regError: String = '';
+
   loginForm: FormGroup
+  registerForm: FormGroup
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -57,34 +61,45 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  //---LOGIN---------------------------
+
+  // onSubmit = (form: FormGroup) => {
+  //   this.authService.login(this.loginForm.getRawValue()).subscribe(u => {
+  //     this.authService.setLoggedUser(u)
+  //     this.authService.nameUser()
+  //     this.router.navigate(['dashboard']).then(() => {
+  //       window.location.reload()
+  //     })      
+  //   })
+  // }
+
   onSubmit = (form: FormGroup) => {
-    this.authService.login(this.loginForm.getRawValue()).subscribe(u => {
-      this.authService.setLoggedUser(u)
-      // this.authService.nameUser()
-      this.router.navigate(['dashboard']).then(() => {
-        window.location.reload()
-      })
-      console.log(u);
+    this.authService.login(this.loginForm.getRawValue()).subscribe({
+      next: (user: LoggedUser) => {
+        this.authService.setLoggedUser(user)
+        this.authService.nameUser()
+        this.router.navigate(['dashboard']).then(() => {
+          window.location.reload()
+      })},
+      error: err => this.logError = err.error
       
     })
   }
 
  //----REGISTER------------------------- 
 
- registerForm: FormGroup
-
   signUp = (form: FormGroup) => {
     const body = 
       {
         firstname: form.value.firstname,
-        lastname: form.value.lastname,
         email: form.value.email,
         password: form.value.password
       }
     this.authService.register(body).subscribe({
       next: (data: LoggedUser) => {
-        console.log(data)
-      }
+        window.location.reload()
+      },
+      error: err => this.regError = err.error
     })
   }
 
@@ -95,3 +110,4 @@ export class LoginComponent implements OnInit {
 
 
 }
+

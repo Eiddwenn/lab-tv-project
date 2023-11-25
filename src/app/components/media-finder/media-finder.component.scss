@@ -1,19 +1,23 @@
+@import "./src/utilities/variables";
+// --------- START SCSS PROJECT --------------------
+
 .btn-more {
-    width: 130px;
+    width: 100%;
     height: 50px;
     background: transparent;
-    border: 2px solid #fff;
     outline: none;
     border-radius: 6px;
     cursor: pointer;
     font-size: 1.1em;
-    color: #fff;
     font-weight: 500;
-    margin-left: 40px;
     transition: .5s;
+    border: 2px solid $orange-crayola;
+    color: $orange-crayola;
+    margin-top: 30px;
+    margin-bottom: 50px;
 
     &:hover {
-        background: #fff;
-        color: #37CEE8;
+        background: $orange-crayola-rgba;
+        color: #fff;
     }
 }

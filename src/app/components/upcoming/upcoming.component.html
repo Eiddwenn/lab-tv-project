@@ -1,20 +1,26 @@
-<p-carousel [value]="mediaService.upcoming" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
+<p-carousel [value]="mediaService.upcoming" [numVisible]="7" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
     <ng-template let-upcoming pTemplate="item">
-        <div class="m-2 text-center py-2 px-3 modal-show">
+        <div class="my-2 mx-3 text-center modal-show">
             <div class="mb-3">
-                <img src="http://image.tmdb.org/t/p/original{{upcoming.backdrop_path}}" [alt]="upcoming.title" class="w-6 card-img-top movie-poster" (click)="goToDetails(upcoming)"/>
+                <img src="http://image.tmdb.org/t/p/original{{upcoming.poster_path}}" [alt]="upcoming.title" class="w-6 card-img-top movie-poster" />
             </div>
-            <div class="modal">
-                <div class="mask">
-                    <img src="http://image.tmdb.org/t/p/original{{upcoming.poster_path}}" [alt]="upcoming.title" class="modal-poster" (click)="goToDetails(upcoming)">
+            <div class="modal-movie">
+                <div>
+                    <img src="http://image.tmdb.org/t/p/original{{upcoming.backdrop_path}}" [alt]="upcoming.title" class="w-6 card-img-top movie-backdrop">
                 </div>
+                <div class="movie-title">
+                    <h1>{{upcoming.title}}</h1>
+                </div>
+                <i class="bi bi-arrow-right-circle icon-position" (click)="goToDetails(upcoming)"></i>
                 <div class="modal-details">
-                    <div class="movie-title">
-                        <span>{{upcoming.title}}</span>
-                    </div>
                     <div class="movie-details">
-                        <p>Data di uscita: <br>{{upcoming.release_date}}</p>
-                        <p>Voto: {{upcoming.vote_average}}</p>
+                        <div class="movie-info">
+                            <p class="text-movie">• {{upcoming.release_date}}</p>
+                            <p class="text-movie"><i class="bi bi-star-fill"></i> {{upcoming.vote_average}}</p>
+                        </div>
+                        <div class="movie-plot">
+                            <p>{{upcoming.overview | slice:0:110}} ...</p>
+                        </div>
                     </div>
                 </div>
                 

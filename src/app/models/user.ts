@@ -1,6 +1,5 @@
 export interface User {
     firstname: string,
-    lastname: string,
     email: string,
     password: string,
     id: number
@@ -8,7 +7,6 @@ export interface User {
 
 export interface RegisterDto {
     firstname: string,
-    lastname: string,
     email: string,
     password: string
 }

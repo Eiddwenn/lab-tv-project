@@ -2,18 +2,49 @@
 // --------- START SCSS PROJECT --------------------
 
 .footer {
-    background-color: $orange-crayola;
-    height: $height-bar;
+    background-color: transparent;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 0.8em;
 
-    .social {
-        text-decoration: none;
-        width: $btn-size;
-        height: $btn-size;
-        font-size: 2em;
-        text-align: center;
-        color: $dark-purple;
+    .footer-container {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        flex-wrap: nowrap;
+
+        .text-footer {
+            color: #fff;
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            line-height: 60px;
+
+            .social {
+                text-decoration: none;
+                width: $btn-size;
+                height: $btn-size;
+                font-size: 2em;
+                text-align: center;
+                color: $orange-crayola;
+                transform: scale(1);
+                transition: .8s;
+    
+                &:hover {
+                    color: #fff;
+                    transform: scale(1.2);
+                }
+            }
+        }
+
+
     }
+
 }

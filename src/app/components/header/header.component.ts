@@ -43,8 +43,6 @@ export class HeaderComponent implements OnInit{
 
   logout = () => {
     localStorage.removeItem('user')
-    this.router.navigate(['login']).then(() => {
-      window.location.reload()
-    })
+    this.router.navigate(['dash-no-login'])
   }
 }

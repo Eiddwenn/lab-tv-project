@@ -1,0 +1,11 @@
+@import "./src/utilities/variables";
+// --------- START SCSS PROJECT --------------------
+
+.search-form {
+    padding: 40px 10px;
+
+    input {
+        height: 50px;
+        border-radius: 30px;
+    }
+}

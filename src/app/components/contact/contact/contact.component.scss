@@ -1,0 +1,131 @@
+@import "./src/utilities/variables";
+// --------- START SCSS PROJECT --------------------
+
+.container-login {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .wrapper {
+        position: relative;
+        width: 400px;
+        height: 440px;
+        background: rgba(255, 255, 255, 0.025);
+        border: 2px solid rgba(243, 115, 59, 0.5);
+        border-radius: 20px;
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 0 10px rgba(243, 115, 59, 0.5);
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        overflow: hidden;
+        flex-direction: column;
+        height: 92%;
+        width: 980px;
+        margin-top: 60px;
+
+        & .form-box {
+            width: 100%;
+            padding: 40px 25px;
+
+            h2 {
+                font-size: 2em;
+                color: $orange-crayola;
+                text-align: center;
+            }
+
+            .input-box {
+                position: relative;
+                width: 100%;
+                height: 50px;
+                border-bottom: 2px solid $orange-crayola;
+                margin: 30px 0;
+                
+                label {
+                    @include label-form;
+                }
+                
+                input {
+                    @include input-form;
+                }
+
+                input:focus~label {
+                    top: -5px;
+                }
+
+                input:valid~label {
+                    top: -5px;
+                }
+
+                .icon {
+                    position: absolute;
+                    right: 8px;
+                    font-size: 1.2em;
+                    color: $orange-crayola;
+                    line-height: 57px;
+                }
+            }
+
+            .input-box-text {
+                position: relative;
+                width: 100%;
+                height: 80px;
+                margin: 30px 0;
+
+                textarea {
+                    @include input-form;
+                    border: 2px solid $orange-crayola;
+                    padding: 10px;
+                    font-weight: 500;
+
+                    &::placeholder {
+                        color: $orange-crayola;
+                        opacity: 1;
+                        font-weight: 300;
+                      }
+                      
+                      &:-ms-input-placeholder {
+                        color: $orange-crayola;
+                        font-weight: 300;
+                      }
+                      
+                      &::-ms-input-placeholder {
+                        color: $orange-crayola;
+                        font-weight: 300;
+                      }
+                }
+
+            }
+            .remember-forgot {
+                font-size: .9em;
+                color: $orange-crayola;
+                font-weight: 500;
+                margin: -15px 0 15px;
+                display: flex;
+                justify-content: space-between;
+
+                input {
+                    accent-color: $red-crayola;
+                    margin-right: 3px;
+                }
+            }
+
+            .btn-submit {
+                @include btn-form;
+            }
+        }
+    }
+}
+
+@media (max-width: 1100px) {
+    .container-login {
+    
+        .wrapper {
+            height: 92%;
+            width: 80%;
+        }
+    }
+}

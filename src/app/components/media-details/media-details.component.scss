@@ -11,16 +11,13 @@
     align-items: center;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    margin-top: $margin-top;
+    margin-bottom: $margin-bottom;
 
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
-    
-    .logout {
+    .back {
         position: absolute;
-        top: 8px;
-        left: 68px;
+        top: 0;
+        left: 20px;
         width: 55px;
         height: 55px;
         background: transparent;
@@ -44,7 +41,6 @@
         width: 100vh;
         height: 100%;
         box-shadow: 0 0 60px 4px #07060c;
-        margin: 70px 0;
         border-radius: 10px;
         overflow: hidden;
 
@@ -93,14 +89,37 @@
                 justify-content: space-between;
                 flex-direction: column;
 
-                span:first-of-type {
-                    padding-top: 60px;
-                    color: #b89788;
-                    padding-bottom: 20px;
+                .title-btn {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    h3 {
+                        margin: 0;
+                    }
+
+                    .btn-buy {
+                        width: 40px;
+                        height: 40px;
+                        background: transparent;
+                        border: 2px solid $orange-crayola;
+                        outline: none;
+                        border-radius: 6px;
+                        cursor: pointer;
+                        font-size: 1.5em;
+                        color: $orange-crayola;
+                        font-weight: 900;
+                        transition: .5s;
+                    
+                        &:hover {
+                            background: $orange-crayola-rgba;
+                            color: #fff;
+                        }
+                    }
                 }
 
-                .plot-media {
-                    padding-right: 100px;
+                span:first-of-type {
+                    color: #b89788;
                 }
 
                 p {
@@ -110,19 +129,21 @@
                         color: #b89788;
                     }
                 }
-
             }
-
         }
     } 
 }
 
-@media (max-width: 1039px) {
-
+@media (max-width: 1130px) {
     .media-full-container {
 
+        .back {
+            left: 20px;
+        }
+    
         .media-container {
-            width: 85%;
+            margin-top: 70px;
+            width: 95%;
 
             .media-details {
                 font-size: 1.2em;

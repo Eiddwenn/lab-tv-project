@@ -1,20 +1,26 @@
-<p-carousel [value]="mediaService.nowPlaying" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
+<p-carousel [value]="mediaService.nowPlaying" [numVisible]="7" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
     <ng-template let-nowPlaying pTemplate="item">
-        <div class="m-2 text-center py-2 px-3 modal-show">
+        <div class="my-2 mx-3 text-center modal-show">
             <div class="mb-3">
-                <img src="http://image.tmdb.org/t/p/original{{nowPlaying.backdrop_path}}" [alt]="nowPlaying.title" class="w-6 card-img-top movie-poster" (click)="goToDetails(nowPlaying)"/>
+                <img src="http://image.tmdb.org/t/p/original{{nowPlaying.poster_path}}" [alt]="nowPlaying.title" class="w-6 card-img-top movie-poster" />
             </div>
-            <div class="modal">
-                <div class="mask">
-                    <img src="http://image.tmdb.org/t/p/original{{nowPlaying.poster_path}}" [alt]="nowPlaying.title" class="modal-poster" (click)="goToDetails(nowPlaying)">
+            <div class="modal-movie">
+                <div>
+                    <img src="http://image.tmdb.org/t/p/original{{nowPlaying.backdrop_path}}" [alt]="nowPlaying.title" class="w-6 card-img-top movie-backdrop">
                 </div>
+                <div class="movie-title">
+                    <h1>{{nowPlaying.title}}</h1>
+                </div>
+                <i class="bi bi-arrow-right-circle icon-position" (click)="goToDetails(nowPlaying)"></i>
                 <div class="modal-details">
                     <div class="movie-details">
-                        <div class="movie-title">
-                            <span>{{nowPlaying.title}}</span>
+                        <div class="movie-info">
+                            <p class="text-movie">• {{nowPlaying.release_date}}</p>
+                            <p class="text-movie"><i class="bi bi-star-fill"></i> {{nowPlaying.vote_average}}</p>
                         </div>
-                        <p>Data di uscita: {{nowPlaying.release_date}}</p>
-                        <p>Voto: {{nowPlaying.vote_average}}</p>
+                        <div class="movie-plot">
+                            <p>{{nowPlaying.overview | slice:0:110}} ...</p>
+                        </div>
                     </div>
                 </div>
                 

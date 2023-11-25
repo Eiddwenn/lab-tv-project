@@ -34,27 +34,34 @@
       "firstname": "mickey",
       "lastname": "mickey",
       "id": 5
+    },
+    {
+      "email": "vero@gmail.com",
+      "password": "$2a$10$zGf86/rjiO/Xl/lpbCb3.O2kP5KHUlQEiJNc2wuuopGNcPMpHfTMS",
+      "firstname": "vero",
+      "lastname": "vero",
+      "id": 6
     }
   ],
   "posts": [],
   "buyed-movies": [
     {
-      "title": "Elemental",
-      "backdrop_path": "/cSYLX73WskxCgvpN3MtRkYUSj1T.jpg",
-      "poster_path": "/8riWcADI1ekEiBguVB9vkilhiQm.jpg",
-      "id": 976573
+      "title": "The Flash",
+      "backdrop_path": "/yF1eOkaYvwiORauRCPWznV9xVvi.jpg",
+      "poster_path": "/rktDFPbfHfUbArZ6OOOKsXcv0Bm.jpg",
+      "id": 298618
     },
     {
-      "title": "The Godfather Part II",
-      "backdrop_path": "/kGzFbGhp99zva6oZODW5atUtnqi.jpg",
-      "poster_path": "/bMadFzhjy9T7R8J48QGq1ngWNAK.jpg",
-      "id": 240
+      "title": "Cortez",
+      "backdrop_path": "/bpJsZ4uZwLbWh8ddnnnGQc0J6Af.jpg",
+      "poster_path": "/lMbASw8Mmdk5nzQIWMwS4vt6DMh.jpg",
+      "id": 433934
     },
     {
-      "title": "Barbie",
-      "backdrop_path": "/1esAE8sLJRWWFsLLeh5r3g2WanI.jpg",
-      "poster_path": "/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg",
-      "id": 346698
+      "title": "Sound of Freedom",
+      "backdrop_path": "/pA3vdhadJPxF5GA1uo8OPTiNQDT.jpg",
+      "poster_path": "/qA5kPYZA7FkVvqcEfJRoOy4kpHg.jpg",
+      "id": 678512
     }
   ]
 }

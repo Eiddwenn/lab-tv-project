@@ -5,6 +5,7 @@ import { Details } from 'src/app/models/media-details';
 import { BuyMedia } from 'src/app/services/login/buy-media.service';
 import { MediaService } from 'src/app/services/media/media.service';
 
+
 @Component({
   selector: 'app-restricted-area',
   templateUrl: './restricted-area.component.html',
@@ -14,34 +15,10 @@ export class RestrictedAreaComponent implements OnInit{
 
   constructor(public mediaService: MediaService, private router: Router, private buyMediaService: BuyMedia){}
   
-  responsiveOptions: any[] | undefined;
   movie: Movie[]
 
   ngOnInit(): void {
     this.getBuyedMovies()
-
-    this.responsiveOptions = [
-      {
-          breakpoint: '1500px',
-          numVisible: 4,
-          numScroll: 1
-      },
-      {
-          breakpoint: '1199px',
-          numVisible: 3,
-          numScroll: 1
-      },
-      {
-          breakpoint: '950px',
-          numVisible: 2,
-          numScroll: 1
-      },
-      {
-          breakpoint: '700px',
-          numVisible: 1,
-          numScroll: 1
-      }
-  ];
   }
 
   getBuyedMovies = () => {
@@ -66,6 +43,8 @@ export class RestrictedAreaComponent implements OnInit{
   deleteMovie = (id: number) => {
     this.buyMediaService.removeMovie(id).subscribe({
       next: (data: any) => {
+        console.log(id);
+        
         this.getBuyedMovies()
       }
     })

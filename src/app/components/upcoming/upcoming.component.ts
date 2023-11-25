@@ -19,20 +19,20 @@ export class UpcomingComponent {
     this.getUpcoming()
 
 
-  this.responsiveOptions = [
+    this.responsiveOptions = [
       {
-          breakpoint: '1500px',
-          numVisible: 4,
+          breakpoint: '1540px',
+          numVisible: 5,
           numScroll: 1
       },
       {
           breakpoint: '1199px',
-          numVisible: 3,
+          numVisible: 4,
           numScroll: 1
       },
       {
           breakpoint: '950px',
-          numVisible: 2,
+          numVisible: 3,
           numScroll: 1
       },
       {

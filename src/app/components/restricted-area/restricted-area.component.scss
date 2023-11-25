@@ -1,0 +1,62 @@
+@import "./src/utilities/variables";
+// --------- START SCSS PROJECT --------------------
+
+.container {
+
+    .row {
+
+        h1 {
+            color: $orange-crayola;
+            padding-top: 35px;
+        }
+
+        .col-10 {
+
+            .card-box {
+                box-shadow: 0 0 60px 4px #07060c !important;
+                backdrop-filter: blur(20px) !important;
+                border-radius: 10px;
+                border: 2px solid $orange-crayola-rgba-5;
+        
+                    span {
+                        font-weight: 500;
+                        color: #fff;
+                    }
+                    .details {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        margin-top: 10px;
+                
+                        .btn-delete {
+                            width: 40px;
+                            height: 40px;
+                            background: transparent;
+                            border: 2px solid $orange-crayola;
+                            outline: none;
+                            border-radius: 6px;
+                            cursor: pointer;
+                            font-size: 1.5em;
+                            color: $orange-crayola;
+                            font-weight: 900;
+                            transition: .5s;
+                        
+                            &:hover {
+                                background: $orange-crayola-rgba;
+                                color: #fff;
+                            }
+                        }
+                
+                        .delete-text {
+                            font-weight: 500;
+                            padding-top: 10px;
+                            color: #fff;
+                        }
+                    }
+            }
+        }
+    }
+
+
+
+}

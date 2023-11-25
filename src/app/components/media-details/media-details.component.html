@@ -1,27 +1,5 @@
-
-<!-- <div class="container">
-    
-    <div class="ratio ratio-16x9">
-        <iframe width="1280" height="720" [src]="mediaDetailsService.sanitizeUrl(videoKey)" title="{{media?.title}}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-    <h3>{{media?.title}}</h3>
-    <span>• {{media?.release_date}} • {{media?.runtime}} min</span>
-    <button type="button" class="btn btn-primary" (click)="buyMovie(media)"><i class="bi bi-cart"></i></button>
-    <div class="row row-cols-6 mt-3">
-        <h5 class="col-12">Generi:</h5>
-        <span class="col"  *ngFor="let genre of genres" > • {{genre}}</span>
-    </div>
-    <div class="row row-cols-6 mt-3">
-        <h5 class="col-12">Cast:</h5>
-        <span  *ngFor="let c of cast" class="col">{{c.name}}, </span>
-    </div>
-    <div *ngFor="let s of similarMedia">
-        <div> {{s.title}}</div>
-    </div>
-</div> -->
-
 <div class="media-full-container">
-    <button type="button" class="logout" (click)="backToHome()"><i class="bi bi-arrow-left"></i></button>
+    <button type="button" class="back" (click)="backToHome()"><i class="bi bi-arrow-left"></i></button>
     <div class="media-container">
         <div class="mask-media-container">
             <div class="container-media-frame">
@@ -30,30 +8,30 @@
                 </div>
             </div>
             <div class="media-details">
-                <h3>{{media?.title}}</h3>
-                <span>• {{media?.release_date}} • {{media?.runtime}} min</span>
-                <span class="plot-media">{{media.overview}}</span> 
-                <button type="button" class="btn btn-primary" (click)="buyMovie(media)"><i class="bi bi-cart"></i></button>
-                <p>
-                    <span>Director:</span>
-                        <br>
-                        <br>
-                        <div class="">
-                            <span class="">Cast:</span><br>
-                            <span  *ngFor="let c of cast" class=""> • {{c.name}} </span>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="">
-                            <span class="">Generi:</span><br>
-                            <span class=""  *ngFor="let genre of genres" > • {{genre}}</span>
-                        </div>
+                <div class="py-4 title-btn">
+                    <h3 style="line-height: 1.4;">{{media?.title}}</h3>
+                    <button type="button" class="btn-buy" (click)="buyMovie(media)"><i class="bi bi-cart"></i></button>
+                </div>
+                <span class="py-4">• {{media?.release_date}} • {{media?.runtime}} min</span>
+                <span class="py-4">{{media.overview}}</span> 
+                <div class="py-4">
+                    <span>Director: </span>
+                    <span> • {{director}} </span>
+                </div>
+                <div class="py-4">
+                    <span class="">Cast:</span><br>
+                    <span  *ngFor="let c of cast"> • {{c.name}} </span>
+                </div>
+                <div class="py-4">
+                    <span class="">Generi:</span><br>
+                    <span *ngFor="let genre of genres" > • {{genre}}</span>
+                </div>
             </div>
             <p-carousel [value]="similarMedia" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
                 <ng-template let-similarMedia pTemplate="item">
                     <div class="m-4">
                         <div class="mb-3 mh-50">
-                            <img src="http://image.tmdb.org/t/p/original{{similarMedia.poster_path}}" onerror="this.src='../../assets/placeholder-error.png'" [alt]="similarMedia.title" class="h-100 card-img-top movie-poster" (click)="goToDetails(similarMedia)"/>
+                            <img src="http://image.tmdb.org/t/p/original{{similarMedia.poster_path}}" onerror="this.src='../../assets/placeholder-error-vert.png'" [alt]="similarMedia.title" class="h-100 card-img-top movie-poster" (click)="goToDetails(similarMedia)"/>
                         </div>
                     </div>
                 </ng-template>

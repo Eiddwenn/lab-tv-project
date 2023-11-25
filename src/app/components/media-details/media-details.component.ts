@@ -87,8 +87,9 @@ export class MediaDetailsComponent implements OnInit{
         const findDirect = data.credits.cast.find((cast: Cast) => cast.known_for_department === 'Directing')
         if(findDirect) {
           this.director = findDirect.name
+          console.log(this.director);
+          
         }
-
         const findGenre = data.genres.map((genres:Genre) => genres.name)
         if (findGenre) {
           this.genres = findGenre
@@ -137,8 +138,7 @@ export class MediaDetailsComponent implements OnInit{
     
     this.buyMediaService.postMedia(movie).subscribe({
       next: (data: any[]) => {
-        console.log('movie post', data);
-        
+        this.router.navigate(['restricted-area'])        
       },
       error: err => console.log('errore', err)
       

@@ -1,14 +1,15 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Details } from 'src/app/models/media-details';
 import { MediaService } from 'src/app/services/media/media.service';
 
 @Component({
-  selector: 'app-media',
-  templateUrl: './media.component.html',
-  styleUrls: ['./media.component.scss']
+  selector: 'app-card-cart',
+  templateUrl: './card-cart.component.html',
+  styleUrls: ['./card-cart.component.scss']
 })
-export class MediaComponent {
+export class CardCartComponent {
+
   constructor(private router: Router, private mediaService: MediaService){}
 
   @Input() movie?: any 
@@ -19,6 +20,5 @@ export class MediaComponent {
     const id = localStorage.getItem('id')    
     this.router.navigate(['media-details', id])
   }
-  
 
 }

@@ -1,0 +1,10 @@
+@import "./src/utilities/variables";
+// --------- START SCSS PROJECT --------------------
+
+.movie-poster {
+    border-radius: 10px;
+
+    &:hover {
+        box-shadow: 0px 0px 2px 2px $orange-crayola;
+    }
+}

@@ -1,8 +1,5 @@
 <div class="container-login">
     <div class="wrapper" [ngClass]="changeForm ? 'active' : ''">
-        <span class="icon-close">
-            <i class="bi bi-x"></i>
-        </span>
         <div class="form-box login" *ngIf="!changeForm" [@inOutForms]>
             <h2>Login</h2>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)" novalidate=""
@@ -19,6 +16,7 @@
                     formControlName="password">
                     <label for="password">Password</label>
                 </div>
+                <span class="error">{{logError}}</span>
                 <div class="remember-forgot">
                     <label for="remember">
                         <input type="checkbox"> Ricordami</label>
@@ -42,11 +40,6 @@
                     <label for="firstname">Nome</label>
                 </div>
                 <div  class="input-box">
-                    <span class="icon"><i class="bi bi-person-fill"></i></span>
-                    <input type="text"id="lastname" name="lastname" formControlName="lastname">
-                    <label for="lastname">Cognome</label>
-                </div>
-                <div  class="input-box">
                     <span class="icon"><i class="bi bi-envelope-fill"></i></span>
                     <input type="email" id="email" name="email" formControlName="email">
                     <label for="email">Email</label>
@@ -55,6 +48,9 @@
                     <span class="icon"><i class="bi bi-lock-fill"></i></span>
                     <input type="password" id="password" name="password" formControlName="password">
                     <label for="password">Password</label>
+                </div>
+                <div  class="error">
+                    <span>{{regError}}</span>
                 </div>
                 <div class="remember-forgot">
                     <label><input type="checkbox"> Accetto i termini e le condizioni</label>
@@ -69,8 +65,4 @@
     </div>
 </div>
 
-<!-- 
-    
-    https://medium.com/ngconf/animating-angulars-ngif-and-ngfor-32a6ff26ed2d 
-    https://stackblitz.com/edit/primenghoverissue-ltrlhl?file=src%2Fapp%2Fapp.component.ts
--->
+

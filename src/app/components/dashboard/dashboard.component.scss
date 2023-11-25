@@ -3,7 +3,19 @@
 
 .title {
     position: relative;
-    margin-left: 72px;
+    margin-left: 65px;
     width: 500px;
     color: $orange-crayola;
+
+    h3 {
+        margin: 0;
+    }
+}
+
+.mar-top {
+    margin-top: $margin-top;
+}
+
+.mar-bot {
+    margin-bottom: $margin-bottom;
 }

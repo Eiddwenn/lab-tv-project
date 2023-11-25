@@ -27,6 +27,9 @@ import { TopRatedComponent } from './components/top-rated/top-rated.component';
 import { UpcomingComponent } from './components/upcoming/upcoming.component';
 import { PopularComponent } from './components/popular/popular.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { CardCartComponent } from './components/card-cart/card-cart/card-cart.component';
+import { DashNoLoginComponent } from './components/dash-no-login/dash-no-login/dash-no-login.component';
+import { ContactComponent } from './components/contact/contact/contact.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +47,10 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     NowPlayingComponent,
     TopRatedComponent,
     UpcomingComponent,
-    PopularComponent
+    PopularComponent,
+    CardCartComponent,
+    DashNoLoginComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
